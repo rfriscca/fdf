@@ -6,7 +6,7 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 16:47:21 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/01/21 15:09:27 by rfriscca         ###   ########.fr       */
+/*   Updated: 2016/01/21 17:16:38 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,7 @@
 
 # include <stdlib.h>
 # include <mlx.h>
+
+void	create_tile(int x, int y, void *mlx, void *win);
 
 #endif

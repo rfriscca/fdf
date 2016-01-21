@@ -1,42 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   create_tile.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/21 13:11:26 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/01/21 17:17:59 by rfriscca         ###   ########.fr       */
+/*   Created: 2016/01/21 16:33:11 by rfriscca          #+#    #+#             */
+/*   Updated: 2016/01/21 17:22:49 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdio.h>
 
-int		ft_exit(int n)
+void	create_tile(int x, int y, void *mlx, void *win)
 {
-	if (n == 53)
-		exit(n);
-	return (0);
-}
-
-int		main(int argc, char **argv)
-{
-	void	*mlx;
-	void	*win;
-	int		x;
-	int		y;
 	int		i;
 	int		j;
+	int		isox;
+	int		isoy;
 
-	x = 0;
-	y = 0;
 	i = 0;
 	j = 0;
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 1920, 1080, "FDF");
-	mlx_key_hook(win, ft_exit, 0);
-	create_tile(x, y, mlx, win);
-	mlx_loop(mlx);
-	return (0);
+	isox = (x - y) * TILE_WIDTH + INIT_POS_X;
+	isoy = (x + y) * TILE_HEIGHT / 2 + INIT_POS_Y;
+	while (i < TILE_WIDTH)
+	{
+		mlx_pixel_put(mlx, win, isox + i, isoy + i, 0xffffff);
+		mlx_pixel_put(mlx, win, isox + i + TILE_HEIGHT / 2, isoy + i - TILE_WIDTH, 0xffffff);
+		++i;
+	}
 }
