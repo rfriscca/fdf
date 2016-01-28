@@ -6,7 +6,7 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 16:47:21 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/01/21 17:16:38 by rfriscca         ###   ########.fr       */
+/*   Updated: 2016/01/28 13:28:48 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,22 @@
 # define TILE_HEIGHT 32
 # define INIT_POS_X 720
 # define INIT_POS_Y 60
+# define I 0
+# define F 1
+# define INC 2
+
 
 # include <stdlib.h>
 # include <mlx.h>
 
 void	create_tile(int x, int y, void *mlx, void *win);
+
+typedef struct	s_seg
+{
+	int			x[3];
+	int			y[3];
+	int			dx;
+	int			dy;
+}				t_seg;
 
 #endif
