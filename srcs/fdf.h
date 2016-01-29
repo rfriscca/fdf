@@ -6,7 +6,7 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 16:47:21 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/01/28 15:00:45 by rfriscca         ###   ########.fr       */
+/*   Updated: 2016/01/29 16:41:28 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # include <stdlib.h>
 # include <mlx.h>
 # include "libft.h"
+# include <fcntl.h>
 
 void			create_tile(int x, int y, void *mlx, void *win);
 
@@ -36,6 +37,14 @@ typedef struct	s_seg
 	int			dy;
 }				t_seg;
 
+typedef struct	s_stock
+{
+	void		*mlx;
+	void		*win;
+}				t_stock;
+
 t_seg			init_coo(int xi, int xf, int yi, int yf);
-void			seg(t_seg coo, void *mlx, void *win);
+void			seg(t_seg coo, void *mlx, void *win, int color);
+t_list			*stock_file(int fd);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 16:14:57 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/01/28 14:06:18 by rfriscca         ###   ########.fr       */
+/*   Updated: 2016/01/29 16:28:53 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,6 @@ typedef struct		s_tree
 t_tree				*ft_newnode(void const *content, size_t content_size);
 void				ft_delnode(t_tree *node);
 void				ft_deltree(t_tree *node);
+
+int					get_next_line(int fd, char **line);
 #endif

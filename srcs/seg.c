@@ -6,13 +6,13 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 13:43:57 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/01/28 15:04:27 by rfriscca         ###   ########.fr       */
+/*   Updated: 2016/01/29 14:41:17 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void		put_seg_dy(t_seg coo, void *mlx, void *win)
+static void		put_seg_dy(t_seg coo, void *mlx, void *win, int color)
 {
 	int		cumul;
 	int		i;
@@ -32,12 +32,12 @@ static void		put_seg_dy(t_seg coo, void *mlx, void *win)
 			cumul = cumul - coo.dy;
 			x = x + coo.x[INC];
 		}
-		mlx_pixel_put(mlx, win, x, y, 0xffffff);
+		mlx_pixel_put(mlx, win, x, y, color);
 		++i;
 	}
 }
 
-static void		put_seg_dx(t_seg coo, void *mlx, void *win)
+static void		put_seg_dx(t_seg coo, void *mlx, void *win, int color)
 {
 	int		cumul;
 	int		i;
@@ -57,16 +57,16 @@ static void		put_seg_dx(t_seg coo, void *mlx, void *win)
 			cumul = cumul - coo.dx;
 			y = y + coo.y[INC];
 		}
-		mlx_pixel_put(mlx, win, x, y, 0xffffff);
+		mlx_pixel_put(mlx, win, x, y, color);
 		++i;
 	}
 }
 
-void			seg(t_seg coo, void *mlx, void *win)
+void			seg(t_seg coo, void *mlx, void *win, int color)
 {
-	mlx_pixel_put(mlx, win, coo.x[I], coo.y[I], 0xffffff);
+	mlx_pixel_put(mlx, win, coo.x[I], coo.y[I], color);
 	if (coo.dx > coo.dy)
-		put_seg_dx(coo, mlx, win);
+		put_seg_dx(coo, mlx, win, color);
 	else
-		put_seg_dy(coo, mlx, win);
+		put_seg_dy(coo, mlx, win, color);
 }

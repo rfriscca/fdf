@@ -6,7 +6,7 @@
 #    By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/04 12:28:48 by rfriscca          #+#    #+#              #
-#    Updated: 2016/01/28 14:05:56 by rfriscca         ###   ########.fr        #
+#    Updated: 2016/01/29 16:28:21 by rfriscca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,7 +78,8 @@ SRC  = \
 	   ft_delnode.c \
 	   ft_deltree.c \
 	   ft_power.c \
-	   ft_abs.c
+	   ft_abs.c \
+	   get_next_line.c
 
 OBJ  = $(SRC:.c=.o)
 
