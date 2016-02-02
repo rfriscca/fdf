@@ -6,7 +6,7 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/21 13:11:26 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/02/01 15:00:43 by rfriscca         ###   ########.fr       */
+/*   Updated: 2016/02/02 15:48:43 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ int		ft_exit(int n, void *param)
 {
 	if (n == 53)
 		exit(n);
+	if (param)
+	{
+	}
 	return (0);
 }
 
@@ -78,14 +81,14 @@ int		main(int argc, char **argv)
 			{
 				x = INIT_POS_X + i * TILE_WIDTH - j * TILE_WIDTH;
 				y = (i > 0) ? y + TILE_HEIGHT / 2 : y;
-				coo = init_coo(x, x + TILE_WIDTH, y - 3 * ft_atoi(value[i]), y + TILE_HEIGHT / 2 - 3 * ft_atoi(value[i + 1]));
+				coo = init_coo(x, x + TILE_WIDTH, y - Z * ft_atoi(value[i]), y + TILE_HEIGHT / 2 - Z * ft_atoi(value[i + 1]));
 				if (ft_atoi(value[i]) > 0 || ft_atoi(value[i + 1]) > 0)
 					color = 0xff00ff;
 				seg(coo, mlx, win, color);
 				color = 0xffffff;
 				if (list->next)
 				{
-					coo = init_coo(x, x - TILE_WIDTH, y - 3 * ft_atoi(value[i]), y + TILE_HEIGHT - 3 * ft_atoi(value2[i]));
+					coo = init_coo(x, x - TILE_WIDTH, y - Z * ft_atoi(value[i]), y + TILE_HEIGHT - Z * ft_atoi(value2[i]));
 					if(ft_atoi(value[i]) > 0 || ft_atoi(value2[i]) > 0)
 						color = 0xff00ff;
 					seg(coo, mlx, win, color);
