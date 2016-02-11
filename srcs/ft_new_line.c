@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stock_file.c                                       :+:      :+:    :+:   */
+/*   ft_new_line.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/29 16:12:08 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/02/11 15:34:15 by rfriscca         ###   ########.fr       */
+/*   Created: 2016/02/11 15:13:47 by rfriscca          #+#    #+#             */
+/*   Updated: 2016/02/11 15:33:22 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_line		*stock_file(int fd)
+t_line	*ft_new_line(char *line, int size)
 {
-	int			ret;
-	t_line		*list_start;
-	t_line		*list;
-	char		*line;
+	t_line	*list;
+	int		i;
 
-	ret = get_next_line(fd, &line);
-	if (ret > 0)
+	i = 0;
+	if ((list = (t_line*)malloc(sizeof(*list))) == NULL)
+		return ((t_line*)0);
+	if ((list->line = ft_strnew(size)) == NULL)
+		return ((t_line*)0);
+	list->next = NULL;
+	while (i < size)
 	{
-		list_start = ft_new_line(line, ft_strlen(line));
-		list = list_start;
+		list->line[i] = line[i];
+		++i;
 	}
-	ret = get_next_line(fd, &line);
-	while (ret > 0)
-	{
-		list->next = ft_new_line(line, ft_strlen(line));
-		list = list->next;
-		ret = get_next_line(fd, &line);
-	}
-	return (list_start);
+	list->size = size;
+	return (list);
 }

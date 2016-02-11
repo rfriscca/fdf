@@ -6,39 +6,24 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/21 13:11:26 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/02/02 15:48:43 by rfriscca         ###   ########.fr       */
+/*   Updated: 2016/02/11 15:36:04 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include <stdio.h>
 
-void	reset_win(t_stock stock)
+void	reset_window(t_stock stock)
 {
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	while (i <= 1920)
-	{
-		while (j <= 1080)
-		{
-			mlx_pixel_put(stock.mlx, stock.win, i, j, 0x000000);
-			++j;
-		}
-		j = 0;
-		++i;
-	}
+	mlx_clear_window(stock.mlx, stock.win);
 }
 
 int		ft_exit(int n, void *param)
 {
 	if (n == 53)
 		exit(n);
-	if (param)
-	{
-	}
+	if (n == 15)
+		reset_window(*(t_stock*)param);
 	return (0);
 }
 
@@ -52,7 +37,7 @@ int		main(int argc, char **argv)
 	char	**value;
 	char	**value2;
 	t_stock	stock;
-	t_list	*list;
+	t_line	*list;
 	int		fd;
 	int		i;
 	int		j;
@@ -73,10 +58,10 @@ int		main(int argc, char **argv)
 	{
 		while (list)
 		{
-			value = ft_strsplit(list->content, ' ');
+			value = ft_strsplit(list->line, ' ');
 			y = INIT_POS_Y + j * TILE_HEIGHT;
 			if (list->next)
-				value2 = ft_strsplit(list->next->content, ' ');
+				value2 = ft_strsplit(list->next->line, ' ');
 			while (value[i + 1])
 			{
 				x = INIT_POS_X + i * TILE_WIDTH - j * TILE_WIDTH;
