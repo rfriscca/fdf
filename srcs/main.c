@@ -6,7 +6,7 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/21 13:11:26 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/02/26 14:15:58 by rfriscca         ###   ########.fr       */
+/*   Updated: 2016/02/26 15:49:57 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,11 @@ int		main(int argc, char **argv)
 	stock.mlx = mlx_init();
 	stock.win = mlx_new_window(stock.mlx, 1920, 1080, "FDF");
 	mlx_key_hook(stock.win, ft_exit, &stock);
-	mlx_hook(stock.win, 6, (1L << 8), dep, &stock);
-	if (argc > 1)
+	if (argc > 1 && test_file(stock.list))
+	{
+		mlx_hook(stock.win, 6, (1L << 8), dep, &stock);
 		draw(stock, 25);
+	}
 	mlx_loop(stock.mlx);
 	return (0);
 }
