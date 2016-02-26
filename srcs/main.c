@@ -6,7 +6,7 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/21 13:11:26 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/02/25 16:03:49 by rfriscca         ###   ########.fr       */
+/*   Updated: 2016/02/26 14:15:58 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,45 +18,58 @@ void	reset_window(t_stock stock)
 	mlx_clear_window(stock.mlx, stock.win);
 }
 
-int		ft_exit(int n, void *param)
-{
-	if (n == 53)
-		exit(n);
-	if (n == 15)
-		reset_window(*(t_stock*)param);
-	return (0);
-}
-
-void	draw(t_stock stock, t_line *list)
+void	draw(t_stock stock, int mult)
 {
 	int		j;
 
 	j = 0;
-	while (list)
+	while (stock.list)
 	{
-		draw_line_h(stock, list, j);
-		if (list->next)
-			draw_line_v(stock, list, j);
+		draw_line_h(stock, stock.list, j, mult);
+		if (stock.list->next)
+			draw_line_v(stock, stock.list, j, mult);
 		++j;
-		list = list->next;
+		stock.list = stock.list->next;
 	}
+}
+
+int		ft_exit(int n, t_stock *param)
+{
+	if (n == 53)
+		exit(n);
+	if (n == 69)
+	{
+		param->mult = param->mult + 5;
+		reset_window(*param);
+		draw(*param, param->mult);
+	}
+	if (n == 78 && param->mult != 5)
+	{
+		param->mult = param->mult - 5;
+		reset_window(*param);
+		draw(*param, param->mult);
+	}
+	return (0);
 }
 
 int		main(int argc, char **argv)
 {
 	t_stock	stock;
-	t_line	*list;
 	int		fd;
 
+	stock.movex = 0;
+	stock.movey = 0;
+	stock.mult = 25;
 	if (argc > 1)
 		fd = open(argv[1], O_RDONLY);
 	if (argc > 1)
-		list = stock_file(fd);
+		stock.list = stock_file(fd);
 	stock.mlx = mlx_init();
 	stock.win = mlx_new_window(stock.mlx, 1920, 1080, "FDF");
 	mlx_key_hook(stock.win, ft_exit, &stock);
+	mlx_hook(stock.win, 6, (1L << 8), dep, &stock);
 	if (argc > 1)
-		draw(stock, list);
+		draw(stock, 25);
 	mlx_loop(stock.mlx);
 	return (0);
 }

@@ -6,15 +6,15 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 16:47:21 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/02/25 15:58:13 by rfriscca         ###   ########.fr       */
+/*   Updated: 2016/02/26 14:06:07 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# define TILE_WIDTH 25
-# define TILE_HEIGHT 25
+# define TILE_WIDTH 1
+# define TILE_HEIGHT 1
 # define INIT_POS_X 860
 # define INIT_POS_Y 50
 # define I 0
@@ -43,12 +43,6 @@ typedef struct		s_seg
 	int				dy;
 }					t_seg;
 
-typedef struct		s_stock
-{
-	void			*mlx;
-	void			*win;
-}					t_stock;
-
 typedef struct		s_line
 {
 	char			*line;
@@ -56,10 +50,23 @@ typedef struct		s_line
 	struct s_line	*next;
 }					t_line;
 
+typedef struct		s_stock
+{
+	void			*mlx;
+	void			*win;
+	t_line			*list;
+	int				movex;
+	int				movey;
+	int				mult;
+}					t_stock;
+
+int					dep(int x, int y, t_stock *param);
 t_seg				init_coo(int xi, int xf, int yi, int yf);
 void				seg(t_seg coo, void *mlx, void *win, int color);
-void				draw_line_h(t_stock stock, t_line *list, int j);
-void				draw_line_v(t_stock stock, t_line *list, int j);
+void				draw_line_h(t_stock stock, t_line *list, int j, int mult);
+void				draw_line_v(t_stock stock, t_line *list, int j, int mult);
+void				draw(t_stock stock, int mult);
+void				reset_window(t_stock stock);
 t_line				*stock_file(int fd);
 t_line				*ft_new_line(char *line, int size);
 
