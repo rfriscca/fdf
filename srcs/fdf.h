@@ -6,7 +6,7 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 16:47:21 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/02/26 15:51:21 by rfriscca         ###   ########.fr       */
+/*   Updated: 2016/03/02 16:06:21 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define F 1
 # define INC 2
 # define Z 3
+# define V ft_atoi(v.value[i])
 
 # include <stdlib.h>
 # include <mlx.h>
