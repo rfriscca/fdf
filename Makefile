@@ -6,7 +6,7 @@
 #    By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/03/16 13:06:21 by rfriscca          #+#    #+#              #
-#    Updated: 2016/03/18 13:08:17 by rfriscca         ###   ########.fr        #
+#    Updated: 2016/03/18 13:29:50 by rfriscca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,10 @@ all : LIBFT MLX $(NAME)
 
 LIBFT :
 	make -C $(LIBFT_DIR) re && make -C $(LIBFT_DIR) clean
+:q
+
+
+
 
 MLX :
 	make -C $(MLX_DIR) re

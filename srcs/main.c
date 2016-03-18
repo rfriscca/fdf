@@ -6,12 +6,11 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/21 13:11:26 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/03/18 13:09:31 by rfriscca         ###   ########.fr       */
+/*   Updated: 2016/03/18 13:36:22 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdio.h>
 
 void	reset_window(t_stock stock)
 {
