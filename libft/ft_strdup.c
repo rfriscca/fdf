@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_new_line.c                                      :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/11 15:13:47 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/03/10 15:25:52 by rfriscca         ###   ########.fr       */
+/*   Created: 2015/11/24 16:07:55 by rfriscca          #+#    #+#             */
+/*   Updated: 2015/12/10 17:13:20 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-t_line	*ft_new_line(char *line, int size)
+char	*ft_strdup(const char *s1)
 {
-	t_line	*list;
-	int		i;
+	char			*str;
+	unsigned long	len;
+	unsigned long	i;
 
 	i = 0;
-	if ((list = (t_line*)malloc(sizeof(*list))) == NULL)
-		return ((t_line*)0);
-	if ((list->line = ft_strnew(size)) == NULL)
-		return ((t_line*)0);
-	list->next = NULL;
-	while (i < size)
+	len = ft_strlen(s1);
+	str = (char *)malloc(len * sizeof(*str) + 1);
+	if (!str)
+		return (NULL);
+	while (s1[i])
 	{
-		list->line[i] = line[i];
-		++i;
+		str[i] = s1[i];
+		i++;
 	}
-	list->size = size;
-	return (list);
+	str[i] = '\0';
+	return (str);
 }

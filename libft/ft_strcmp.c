@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_new_line.c                                      :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/11 15:13:47 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/03/10 15:25:52 by rfriscca         ###   ########.fr       */
+/*   Created: 2015/11/24 14:27:20 by rfriscca          #+#    #+#             */
+/*   Updated: 2015/11/28 12:50:02 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-
-t_line	*ft_new_line(char *line, int size)
+int		ft_strcmp(const char *s1, const char *s2)
 {
-	t_line	*list;
-	int		i;
-
-	i = 0;
-	if ((list = (t_line*)malloc(sizeof(*list))) == NULL)
-		return ((t_line*)0);
-	if ((list->line = ft_strnew(size)) == NULL)
-		return ((t_line*)0);
-	list->next = NULL;
-	while (i < size)
+	while (*s1 == *s2 && (*(s1 + 1) || *(s2 + 1)))
 	{
-		list->line[i] = line[i];
-		++i;
+		s1++;
+		s2++;
 	}
-	list->size = size;
-	return (list);
+	return (*(unsigned char*)s1 - *(unsigned char*)s2);
 }

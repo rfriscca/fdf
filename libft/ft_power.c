@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_new_line.c                                      :+:      :+:    :+:   */
+/*   ft_power.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/11 15:13:47 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/03/10 15:25:52 by rfriscca         ###   ########.fr       */
+/*   Created: 2015/12/15 14:33:27 by rfriscca          #+#    #+#             */
+/*   Updated: 2015/12/15 14:55:04 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-t_line	*ft_new_line(char *line, int size)
+int		ft_power(int n, int pow)
 {
-	t_line	*list;
 	int		i;
+	int		n2;
 
-	i = 0;
-	if ((list = (t_line*)malloc(sizeof(*list))) == NULL)
-		return ((t_line*)0);
-	if ((list->line = ft_strnew(size)) == NULL)
-		return ((t_line*)0);
-	list->next = NULL;
-	while (i < size)
+	i = 1;
+	if (pow == 0)
+		n2 = 1;
+	if (pow > 0)
+		n2 = n;
+	if (pow < 0)
+		ft_putstr("Error ft_power don't handle negative power cases");
+	while (i < pow)
 	{
-		list->line[i] = line[i];
+		n2 = n2 * n;
 		++i;
 	}
-	list->size = size;
-	return (list);
+	return (n2);
 }

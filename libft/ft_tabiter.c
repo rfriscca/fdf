@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_new_line.c                                      :+:      :+:    :+:   */
+/*   ft_tabiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/11 15:13:47 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/03/10 15:25:52 by rfriscca         ###   ########.fr       */
+/*   Created: 2015/12/14 17:49:59 by rfriscca          #+#    #+#             */
+/*   Updated: 2015/12/15 15:02:37 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-t_line	*ft_new_line(char *line, int size)
+void	ft_tabiter(char **tab, char *(*f)(char*))
 {
-	t_line	*list;
 	int		i;
 
 	i = 0;
-	if ((list = (t_line*)malloc(sizeof(*list))) == NULL)
-		return ((t_line*)0);
-	if ((list->line = ft_strnew(size)) == NULL)
-		return ((t_line*)0);
-	list->next = NULL;
-	while (i < size)
+	while (tab[i])
 	{
-		list->line[i] = line[i];
+		tab[i] = f(tab[i]);
 		++i;
 	}
-	list->size = size;
-	return (list);
 }

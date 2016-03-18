@@ -1,33 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_new_line.c                                      :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/11 15:13:47 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/03/10 15:25:52 by rfriscca         ###   ########.fr       */
+/*   Created: 2015/11/28 12:33:51 by rfriscca          #+#    #+#             */
+/*   Updated: 2015/12/10 15:14:29 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-t_line	*ft_new_line(char *line, int size)
+int		ft_atoi(const char *str)
 {
-	t_line	*list;
-	int		i;
+	int		signe;
+	int		c;
 
-	i = 0;
-	if ((list = (t_line*)malloc(sizeof(*list))) == NULL)
-		return ((t_line*)0);
-	if ((list->line = ft_strnew(size)) == NULL)
-		return ((t_line*)0);
-	list->next = NULL;
-	while (i < size)
+	c = 0;
+	signe = 1;
+	while (ft_isascii(*str) && !ft_isalnum(*str) && *str != '-' && *str != '+')
+		str++;
+	if (*str == '-')
 	{
-		list->line[i] = line[i];
-		++i;
+		signe = -1;
+		str++;
 	}
-	list->size = size;
-	return (list);
+	if (*str == '+' && *(str - 1) != '-')
+		str++;
+	while (ft_isdigit(*str))
+	{
+		c = c + *str - '0';
+		if (ft_isdigit(*(str + 1)))
+			c = c * 10;
+		str++;
+	}
+	c = c * signe;
+	return (c);
 }

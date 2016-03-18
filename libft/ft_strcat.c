@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_new_line.c                                      :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/11 15:13:47 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/03/10 15:25:52 by rfriscca         ###   ########.fr       */
+/*   Created: 2015/11/24 17:12:23 by rfriscca          #+#    #+#             */
+/*   Updated: 2015/12/02 11:53:47 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-t_line	*ft_new_line(char *line, int size)
+char	*ft_strcat(char *s1, const char *s2)
 {
-	t_line	*list;
-	int		i;
+	unsigned long	l;
+	unsigned long	i;
 
 	i = 0;
-	if ((list = (t_line*)malloc(sizeof(*list))) == NULL)
-		return ((t_line*)0);
-	if ((list->line = ft_strnew(size)) == NULL)
-		return ((t_line*)0);
-	list->next = NULL;
-	while (i < size)
+	l = ft_strlen(s1);
+	while (i < ft_strlen(s2))
 	{
-		list->line[i] = line[i];
-		++i;
+		s1[l + i] = s2[i];
+		i++;
 	}
-	list->size = size;
-	return (list);
+	s1[l + i] = '\0';
+	return (s1);
 }

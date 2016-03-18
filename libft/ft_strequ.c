@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_new_line.c                                      :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/11 15:13:47 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/03/10 15:25:52 by rfriscca         ###   ########.fr       */
+/*   Created: 2015/11/25 16:59:50 by rfriscca          #+#    #+#             */
+/*   Updated: 2015/12/02 11:54:21 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-
-t_line	*ft_new_line(char *line, int size)
+int		ft_strequ(char const *s1, char const *s2)
 {
-	t_line	*list;
-	int		i;
+	unsigned int	i;
 
 	i = 0;
-	if ((list = (t_line*)malloc(sizeof(*list))) == NULL)
-		return ((t_line*)0);
-	if ((list->line = ft_strnew(size)) == NULL)
-		return ((t_line*)0);
-	list->next = NULL;
-	while (i < size)
+	while (s1[i] || s2[i])
 	{
-		list->line[i] = line[i];
-		++i;
+		if (s1[i] != s2[i])
+			return (0);
+		i++;
 	}
-	list->size = size;
-	return (list);
+	return (1);
 }

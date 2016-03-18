@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_new_line.c                                      :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/11 15:13:47 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/03/10 15:25:52 by rfriscca         ###   ########.fr       */
+/*   Created: 2015/11/27 15:04:37 by rfriscca          #+#    #+#             */
+/*   Updated: 2015/11/30 17:40:21 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-t_line	*ft_new_line(char *line, int size)
+void	ft_putnbr(int n)
 {
-	t_line	*list;
-	int		i;
+	unsigned int	n2;
 
-	i = 0;
-	if ((list = (t_line*)malloc(sizeof(*list))) == NULL)
-		return ((t_line*)0);
-	if ((list->line = ft_strnew(size)) == NULL)
-		return ((t_line*)0);
-	list->next = NULL;
-	while (i < size)
+	if (n >= 0)
+		n2 = n;
+	if (n < 0)
 	{
-		list->line[i] = line[i];
-		++i;
+		ft_putchar('-');
+		n2 = -n;
 	}
-	list->size = size;
-	return (list);
+	if (n2 > 9)
+	{
+		ft_putnbr(n2 / 10);
+		ft_putnbr(n2 % 10);
+	}
+	if (n2 <= 9)
+		ft_putchar(n2 + 48);
 }

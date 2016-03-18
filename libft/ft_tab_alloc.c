@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_new_line.c                                      :+:      :+:    :+:   */
+/*   tab_alloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/11 15:13:47 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/03/10 15:25:52 by rfriscca         ###   ########.fr       */
+/*   Created: 2015/12/07 15:26:42 by rfriscca          #+#    #+#             */
+/*   Updated: 2015/12/15 15:02:54 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-t_line	*ft_new_line(char *line, int size)
+char	**ft_tab_alloc(int l, int c)
 {
-	t_line	*list;
+	char	**tab;
 	int		i;
 
 	i = 0;
-	if ((list = (t_line*)malloc(sizeof(*list))) == NULL)
-		return ((t_line*)0);
-	if ((list->line = ft_strnew(size)) == NULL)
-		return ((t_line*)0);
-	list->next = NULL;
-	while (i < size)
+	if ((tab = (char**)malloc(sizeof(tab) * l + 1)) == NULL)
+		return (NULL);
+	while (i < l)
 	{
-		list->line[i] = line[i];
-		++i;
+		if ((tab[i] = ft_strnew(c)) == NULL)
+			return (NULL);
+		i++;
 	}
-	list->size = size;
-	return (list);
+	tab[i] = NULL;
+	return (tab);
 }

@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_new_line.c                                      :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/11 15:13:47 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/03/10 15:25:52 by rfriscca         ###   ########.fr       */
+/*   Created: 2015/11/25 14:35:03 by rfriscca          #+#    #+#             */
+/*   Updated: 2015/12/03 13:34:38 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-t_line	*ft_new_line(char *line, int size)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	t_line	*list;
-	int		i;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
-	if ((list = (t_line*)malloc(sizeof(*list))) == NULL)
-		return ((t_line*)0);
-	if ((list->line = ft_strnew(size)) == NULL)
-		return ((t_line*)0);
-	list->next = NULL;
-	while (i < size)
+	j = 0;
+	while (dst[i] && i < size)
+		i++;
+	if (i == size)
+		return (i + ft_strlen(src));
+	while (i + j < size - 1 && src[j])
 	{
-		list->line[i] = line[i];
-		++i;
+		dst[i + j] = src[j];
+		j++;
 	}
-	list->size = size;
-	return (list);
+	dst[i + j] = '\0';
+	return (i + ft_strlen(src));
 }

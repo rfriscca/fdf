@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_new_line.c                                      :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/11 15:13:47 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/03/10 15:25:52 by rfriscca         ###   ########.fr       */
+/*   Created: 2015/11/27 15:35:06 by rfriscca          #+#    #+#             */
+/*   Updated: 2015/12/03 18:11:29 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-t_line	*ft_new_line(char *line, int size)
+void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 {
-	t_line	*list;
-	int		i;
+	size_t	i;
 
 	i = 0;
-	if ((list = (t_line*)malloc(sizeof(*list))) == NULL)
-		return ((t_line*)0);
-	if ((list->line = ft_strnew(size)) == NULL)
-		return ((t_line*)0);
-	list->next = NULL;
-	while (i < size)
+	while (i < n)
 	{
-		list->line[i] = line[i];
-		++i;
+		((unsigned char*)dst)[i] = ((unsigned char*)src)[i];
+		if (((unsigned char*)src)[i] == (unsigned char)c)
+			return (dst + i + 1);
+		i++;
 	}
-	list->size = size;
-	return (list);
+	return (NULL);
 }

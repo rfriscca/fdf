@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_new_line.c                                      :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/11 15:13:47 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/03/10 15:25:52 by rfriscca         ###   ########.fr       */
+/*   Created: 2015/11/24 14:44:09 by rfriscca          #+#    #+#             */
+/*   Updated: 2015/12/16 11:36:51 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-t_line	*ft_new_line(char *line, int size)
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	t_line	*list;
-	int		i;
+	size_t		i;
 
 	i = 0;
-	if ((list = (t_line*)malloc(sizeof(*list))) == NULL)
-		return ((t_line*)0);
-	if ((list->line = ft_strnew(size)) == NULL)
-		return ((t_line*)0);
-	list->next = NULL;
-	while (i < size)
+	if (n == 0)
+		return (0);
+	while (i < n - 1 && *s1 == *s2)
 	{
-		list->line[i] = line[i];
-		++i;
+		i++;
+		s1++;
+		s2++;
+		if (!*s1 || !*s2)
+			return (*(unsigned char*)s1 - *(unsigned char*)s2);
 	}
-	list->size = size;
-	return (list);
+	return (*(unsigned char*)s1 - *(unsigned char*)s2);
 }

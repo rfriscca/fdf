@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_new_line.c                                      :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/11 15:13:47 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/03/10 15:25:52 by rfriscca         ###   ########.fr       */
+/*   Created: 2015/11/25 15:26:40 by rfriscca          #+#    #+#             */
+/*   Updated: 2015/12/11 14:05:34 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-t_line	*ft_new_line(char *line, int size)
+char	*ft_strnew(size_t size)
 {
-	t_line	*list;
-	int		i;
+	size_t	i;
+	char	*str;
 
 	i = 0;
-	if ((list = (t_line*)malloc(sizeof(*list))) == NULL)
-		return ((t_line*)0);
-	if ((list->line = ft_strnew(size)) == NULL)
-		return ((t_line*)0);
-	list->next = NULL;
-	while (i < size)
+	if ((str = (char *)malloc((size + 1) * sizeof(*str))) == NULL)
+		return (NULL);
+	while (i <= size)
 	{
-		list->line[i] = line[i];
+		str[i] = '\0';
 		++i;
 	}
-	list->size = size;
-	return (list);
+	return (str);
 }

@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_new_line.c                                      :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/11 15:13:47 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/03/10 15:25:52 by rfriscca         ###   ########.fr       */
+/*   Created: 2015/11/27 15:47:54 by rfriscca          #+#    #+#             */
+/*   Updated: 2015/12/03 18:12:04 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-t_line	*ft_new_line(char *line, int size)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	t_line	*list;
-	int		i;
+	size_t			i;
+	unsigned char	c1;
+	unsigned char	c2;
 
 	i = 0;
-	if ((list = (t_line*)malloc(sizeof(*list))) == NULL)
-		return ((t_line*)0);
-	if ((list->line = ft_strnew(size)) == NULL)
-		return ((t_line*)0);
-	list->next = NULL;
-	while (i < size)
+	while (i < n)
 	{
-		list->line[i] = line[i];
-		++i;
+		c1 = ((unsigned char*)s1)[i];
+		c2 = ((unsigned char*)s2)[i];
+		if (c1 != c2)
+			return (c1 - c2);
+		i++;
 	}
-	list->size = size;
-	return (list);
+	return (0);
 }
