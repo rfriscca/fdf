@@ -6,7 +6,7 @@
 #    By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/03/16 13:06:21 by rfriscca          #+#    #+#              #
-#    Updated: 2016/03/18 13:29:50 by rfriscca         ###   ########.fr        #
+#    Updated: 2016/03/18 16:42:50 by rfriscca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,20 +26,17 @@ SRCS = draw_line.c		\
 OBJ = $(SRCS:.c=.o)
 NAME = fdf
 LIBFT_DIR = libft
+OBJ_DIR = objs
 MLX_DIR = minilibx_macos
 
 
 all : LIBFT MLX $(NAME)
 
 LIBFT :
-	make -C $(LIBFT_DIR) re && make -C $(LIBFT_DIR) clean
-:q
-
-
-
+	make -C $(LIBFT_DIR)
 
 MLX :
-	make -C $(MLX_DIR) re
+	make -C $(MLX_DIR)
 
 $(NAME) : $(OBJ)
 	gcc $(FLAGS) -o $(NAME) $(OBJ) $(LIBRARY) $(INCLUDES) $(FRAMEWORK)

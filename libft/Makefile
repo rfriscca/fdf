@@ -6,7 +6,7 @@
 #    By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/04 12:28:48 by rfriscca          #+#    #+#              #
-#    Updated: 2016/01/29 16:28:21 by rfriscca         ###   ########.fr        #
+#    Updated: 2016/03/18 16:33:43 by rfriscca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,12 +85,15 @@ OBJ  = $(SRC:.c=.o)
 
 FLAGS = -Wall -Werror -Wextra
 
-$(NAME) :
-	gcc $(FLAGS) -c $(SRC)
+all : $(NAME)
+
+
+$(NAME) : $(OBJ)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
 
-all : $(NAME)
+%.o : %.c
+	gcc $(FLAGS) -c $(SRC)
 
 clean :
 	rm -f $(OBJ)
