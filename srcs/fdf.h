@@ -6,7 +6,7 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 16:47:21 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/03/18 13:36:16 by rfriscca         ###   ########.fr       */
+/*   Updated: 2016/04/05 12:45:20 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define V ft_atoi(v.value[i])
 
 # include <stdlib.h>
-# include <mlx.h>
+# include "mlx.h"
 # include "libft.h"
 # include <fcntl.h>
 

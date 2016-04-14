@@ -6,7 +6,7 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/21 13:11:26 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/03/18 14:53:58 by rfriscca         ###   ########.fr       */
+/*   Updated: 2016/04/01 13:17:10 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,42 @@ void	draw(t_stock stock, int mult)
 	}
 }
 
+void	ft_move(int n, t_stock *param)
+{
+	static int	y = 0;
+	static int	x = 0;
+
+	if (n == 123)
+		--x;
+	if (n == 124)
+		++x;
+	if (n == 125)
+		++y;
+	if (n == 126)
+		--y;
+	param->movex = x * 20;
+	param->movey = y * 20;
+	draw(*param, param->mult);
+}
+
 int		ft_exit(int n, t_stock *param)
 {
+	reset_window(*param);
 	if (n == 53)
 		exit(n);
 	if (n == 69)
 	{
 		param->mult = param->mult + 5;
-		reset_window(*param);
 		draw(*param, param->mult);
+		return (0);
 	}
 	if (n == 78 && param->mult != 5)
 	{
 		param->mult = param->mult - 5;
-		reset_window(*param);
 		draw(*param, param->mult);
+		return (0);
 	}
+	ft_move(n, param);
 	return (0);
 }
 

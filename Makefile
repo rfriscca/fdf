@@ -6,18 +6,17 @@
 #    By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/03/16 13:06:21 by rfriscca          #+#    #+#              #
-#    Updated: 2016/03/18 16:42:50 by rfriscca         ###   ########.fr        #
+#    Updated: 2016/04/01 14:25:01 by rfriscca         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 FLAGS = -Wall -Wextra -Werror
 FRAMEWORK = -framework OpenGl -framework AppKit
 LIBRARY = -Llibft/ -lft -Lminilibx_macos/ -lmlx
-INCLUDES = -I libft/
+INCLUDES = -I libft/ -I minilibx_macos/
 SRCS_DIR = srcs
 SRCS = draw_line.c		\
 	   ft_new_line.c	\
-	   dep.c			\
 	   init_coo.c		\
 	   main.c			\
 	   seg.c			\
