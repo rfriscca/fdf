@@ -6,7 +6,7 @@
 /*   By: rfriscca <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 16:47:21 by rfriscca          #+#    #+#             */
-/*   Updated: 2016/04/05 12:45:20 by rfriscca         ###   ########.fr       */
+/*   Updated: 2016/04/14 17:17:11 by rfriscca         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void				draw_line_h(t_stock stock, t_line *list, int j, int mult);
 void				draw_line_v(t_stock stock, t_line *list, int j, int mult);
 void				draw(t_stock stock, int mult);
 void				reset_window(t_stock stock);
+void				ft_error_handler(int err_num);
 t_line				*stock_file(int fd);
 t_line				*ft_new_line(char *line, int size);
 
