@@ -20,5 +20,7 @@ void	ft_error_handler(int err_num)
 		ft_putstr("Read error\nMake sure your file is an existing file\n");
 	else if (err_num == 3)
 		ft_putstr("Read error\nMaybe you tried to read a directory\n");
+	else if (err_num == 4)
+		ft_putstr("Error not a valid file\n");
 	exit(0);
 }

@@ -87,6 +87,8 @@ int		main(int argc, char **argv)
 	if (argc > 1)
 		if ((stock.list = stock_file(fd)) == NULL)
 			ft_error_handler(3);
+	if (test_file(stock.list) == 0)
+		ft_error_handler(4);
 	stock.mlx = mlx_init();
 	stock.win = mlx_new_window(stock.mlx, 1920, 1080, "FDF");
 	mlx_key_hook(stock.win, ft_exit, &stock);

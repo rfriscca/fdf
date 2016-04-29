@@ -14,9 +14,20 @@
 
 int		test_file(t_line *list)
 {
-	if (ft_isdigit(list->line[0]))
-		return (1);
-	if (list->line[0] == '-' && ft_isdigit(list->line[1]))
-		return (1);
-	return (0);
+	int	i;
+
+	i = 0;
+	while (list)
+	{
+		while (list->line[i])
+		{
+			if (list->line[i] != ' ' &&
+				ft_isdigit(list->line[i]) == 0)
+				return(0);
+			++i;
+		}
+		i = 0;
+		list = list->next;
+	}
+	return (1);
 }
